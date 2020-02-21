@@ -26,15 +26,15 @@ module.exports = appInfo => {
     // 单数据库信息配置
     client: {
       // host
-      host: 'localhost',
+      host: '120.79.209.56',
       // 端口号
-      port: '3308',
+      port: '3307',
       // 用户名
       user: 'root',
       // 密码
       password: '123456',
       // 数据库名
-      database: 'blogData',
+      database: 'react',
     },
     // 是否加载到 app 上，默认开启
     app: true,
