@@ -41,6 +41,16 @@ module.exports = appInfo => {
     // 是否加载到 agent 上，默认关闭
     agent: false,
   };
+  config.security = {
+    csrf: { enable: false },
+    domainWhiteList: [ '*' ],
+  };
+  config.cors = {
+    // origin: '*',
+    origin: 'http://localhost:3000',
+    credentials: true,
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+  };
   return {
     ...config,
     ...userConfig,

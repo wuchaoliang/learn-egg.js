@@ -8,7 +8,7 @@ class MainController extends Controller {
   }
   async checkLogin() {
     const userName = this.ctx.request.body.userName || 'test';
-    const password = this.ctx.request.body.password || 'aB123456';
+    const password = this.ctx.request.body.password || '123456';
     const sql = "SELECT userName FROM admin_user WHERE userName = '" + userName + "' AND password = '" + password + "'";
     const res = await this.app.mysql.query(sql);
     console.log('res', res, userName, password);
