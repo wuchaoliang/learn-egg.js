@@ -4,7 +4,7 @@ const Controller = require('egg').Controller;
 
 class MainController extends Controller {
   async index() {
-    this.ctx.body = '测试 github actions 2';
+    this.ctx.body = '测试 github actions 3';
   }
   async checkLogin() {
     const userName = this.ctx.request.body.userName || 'test';
