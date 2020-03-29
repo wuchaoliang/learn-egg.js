@@ -25,4 +25,5 @@ jobs:
           cd learn-egg.js/
           npm stop
           git pull git@github.com:wuchaoliang/learn-egg.js.git
+          npm i --production
           npm start
