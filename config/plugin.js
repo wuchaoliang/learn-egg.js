@@ -7,8 +7,8 @@ module.exports = {
     enable: true,
     package: 'egg-mysql',
   },
-  cors: {
+  sequelize: {
     enable: true,
-    package: 'egg-cors',
+    package: 'egg-sequelize',
   },
 };

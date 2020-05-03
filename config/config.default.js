@@ -41,15 +41,18 @@ module.exports = appInfo => {
     // 是否加载到 agent 上，默认关闭
     agent: false,
   };
+  config.sequelize = {
+    dialect: 'mysql',
+    // 这里也可以通过 .env 文件注入环境变量，然后通过 process.env 获取
+    host: '120.79.209.56',
+    port: '3307',
+    database: 'react',
+    username: 'root',
+    password: '123456',
+  };
   config.security = {
     csrf: { enable: false },
     domainWhiteList: [ '*' ],
-  };
-  config.cors = {
-    // origin: '*',
-    origin: 'http://localhost:3000',
-    credentials: true,
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
   return {
     ...config,
