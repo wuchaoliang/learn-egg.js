@@ -8,7 +8,7 @@ module.exports = {
       age: 34,
     },
     {
-      name: 'Kack',
+      name: 'Jack',
       password: md5('654321'),
       age: 54,
     }], {
