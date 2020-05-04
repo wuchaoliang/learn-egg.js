@@ -1,24 +1,24 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const { STRING, INTEGER, DATE } = DataTypes;
-  const Users = sequelize.define('Users', {
+
+module.exports = app => {
+  const { STRING, INTEGER, DATE } = app.Sequelize;
+
+  const User = app.model.define('users', {
     id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
       type: INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    name: {
-      type: STRING(30),
-      unique: true,
-    },
+    name: STRING(30),
     password: STRING(32),
     age: INTEGER,
     created_at: DATE,
     updated_at: DATE,
-  }, {});
-  Users.associate = function(models) {
-    // associations can be defined here
+  });
+
+  User.prototype.associate = function() {
+    app.model.User.hasMany(app.model.Post, { as: 'posts' });
   };
-  return Users;
+
+  return User;
 };
