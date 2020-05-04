@@ -11,7 +11,7 @@ module.exports = {
       created_at: DATE,
       updated_at: DATE,
     }, {
-      tableName: 'users',
+      tableName: 'posts',
       charset: 'utf8mb4',
       collate: 'utf8mb4_bin',
     });
