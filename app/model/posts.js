@@ -3,7 +3,7 @@
 module.exports = app => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
-  const Post = app.model.define('post', {
+  const Posts = app.model.define('posts', {
     id: {
       type: INTEGER,
       primaryKey: true,
@@ -16,15 +16,15 @@ module.exports = app => {
     updated_at: DATE,
   });
 
-  Post.associate = function() {
-    app.model.Post.belongsTo(app.model.User, { as: 'user', foreignKey: 'user_id' });
+  Posts.associate = function() {
+    app.model.Posts.belongsTo(app.model.Users, { as: 'user', foreignKey: 'user_id' });
   };
 
-  Post.findByIdWithUser = async function(id, userId) {
+  Posts.findByIdWithUser = async function(id, userId) {
     return await this.findOne({
       where: { id, user_id: userId },
     });
   };
 
-  return Post;
+  return Posts;
 };

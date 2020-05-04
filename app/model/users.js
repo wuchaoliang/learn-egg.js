@@ -3,7 +3,7 @@
 module.exports = app => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
-  const User = app.model.define('users', {
+  const Users = app.model.define('users', {
     id: {
       type: INTEGER,
       primaryKey: true,
@@ -16,9 +16,9 @@ module.exports = app => {
     updated_at: DATE,
   });
 
-  User.prototype.associate = function() {
-    app.model.User.hasMany(app.model.Post, { as: 'posts' });
+  Users.prototype.associate = function() {
+    app.model.Users.hasMany(app.model.Posts, { as: 'posts' });
   };
 
-  return User;
+  return Users;
 };
