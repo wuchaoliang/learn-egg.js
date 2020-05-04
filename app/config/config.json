@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "123456",
-    "database": "sequelize_dev",
+    "database": "react",
     "host": "120.79.209.56",
     "dialect": "mysql",
     "operatorsAliases": false,

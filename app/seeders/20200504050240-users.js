@@ -1,5 +1,4 @@
 'use strict';
-const md5 = require('md5');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -13,14 +12,18 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Users', [{
-      username: 'John',
-      password: md5('123456'),
-    },
-    {
-      username: 'Jack',
-      password: md5('654321'),
-    }], {});
+    return queryInterface.bulkInsert('Users', [
+      {
+        name: 'John',
+        password: '123456',
+        age: 23,
+      },
+      {
+        name: 'Jack',
+        password: '654321',
+        age: 35,
+      },
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
