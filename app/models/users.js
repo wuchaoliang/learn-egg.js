@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: INTEGER,
     },
-    name: STRING(30),
+    name: {
+      type: STRING(30),
+      unique: true,
+    },
     password: STRING(32),
     age: INTEGER,
     created_at: DATE,
