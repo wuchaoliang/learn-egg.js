@@ -6,9 +6,9 @@ const Controller = require('egg').Controller;
 class PostController extends Controller {
 
   async login() {
-    const { ctx } = this;
+    const { ctx, app } = this;
     const { body: { name, password } } = ctx.request;
-    const res = await this.ctx.model.Users.findAll({
+    const users = await this.ctx.model.Users.findAll({
       where: {
         [Op.and]: [
           { name },
@@ -16,7 +16,23 @@ class PostController extends Controller {
         ],
       },
     });
-    ctx.body = res;
+    if (users.length > 0) {
+      const user = users[0];
+      ctx.status = 200;
+      const token = app.jwt.sign({
+        id: user.id,
+        name: user.name,
+      });
+      // await app.redis.set(`token_${user.id}`, token);
+      ctx.body = {
+        status: 'ok',
+        type: 'account',
+        currentAuthority: 'admin',
+        token,
+      };
+    } else {
+      ctx.body = 'res';
+    }
   }
 }
 

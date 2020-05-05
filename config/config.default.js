@@ -54,6 +54,9 @@ module.exports = appInfo => {
     csrf: { enable: false },
     domainWhiteList: [ '*' ],
   };
+  config.jwt = {
+    secret: '123456',
+  };
   return {
     ...config,
     ...userConfig,
