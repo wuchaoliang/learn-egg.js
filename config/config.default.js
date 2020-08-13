@@ -59,7 +59,7 @@ module.exports = appInfo => {
     password: '123456',
   };
   config.security = {
-    csrf: { enable: false },
+    csrf: { enable: true },
     domainWhiteList: [ '*' ],
   };
   config.jwt = {
