@@ -65,6 +65,13 @@ module.exports = appInfo => {
   config.jwt = {
     secret: '123456',
   };
+  config.view = {
+    mapping: {
+      '.html': 'ejs',
+    },
+  };
+  config.middleware = ['auth'];
+
   return {
     ...config,
     ...userConfig,
