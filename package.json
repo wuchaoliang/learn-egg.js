@@ -7,6 +7,7 @@
     "declarations": true
   },
   "dependencies": {
+    "await-stream-ready": "^1.0.1",
     "egg": "^2.15.1",
     "egg-jwt": "^3.1.7",
     "egg-mysql": "^3.0.0",
@@ -15,8 +16,10 @@
     "egg-security": "^2.7.1",
     "egg-sequelize": "^5.2.1",
     "egg-view-ejs": "^2.0.1",
-    "md5": "^2.2.1",
-    "mysql2": "^2.1.0"
+    "md5": "^2.3.0",
+    "mysql2": "^2.1.0",
+    "qiniu": "^7.3.2",
+    "stream-wormhole": "^1.1.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",
