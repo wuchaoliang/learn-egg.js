@@ -72,6 +72,7 @@ module.exports = appInfo => {
   };
   config.middleware = ['auth'];
   config.multipart = {
+    fileSize: '50mb',
     // will append to whilelist
     fileExtensions: [
       '.pdf',
