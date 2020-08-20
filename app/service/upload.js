@@ -20,54 +20,39 @@ config.zone = qiniu.zone.Zone_z2;
 class upload extends Service {
   async uploadFiles() {
     const stream = await this.ctx.getFileStream(); // 获取表单提交的数据
-    let localFilePath = 'app/public/upload/' + path.basename(stream.filename); // "filename":"c:/images/291051166-5b20eca6448e8_articlex.png",  path.basename  => 291051166-5b20eca6448e8_articlex.png
-    const writeStream = fs.createWriteStream(localFilePath);
-
-
-
-
-    // const stream = await ctx.getFileStream();
-    console.log('stream',stream)
-    const filename =
-      md5(stream.filename) + path.extname(stream.filename).toLocaleLowerCase();
-    // const localFilePath = path.join(__dirname, "../public/uploads", filename);
-    // const writeStream = fs.createWriteStream(localFilePath);
     try {
-      await awaitWriteStream(stream.pipe(writeStream));
       const formUploader = new qiniu.form_up.FormUploader(config);
       const putExtra = new qiniu.form_up.PutExtra();
       const imgSrc = await new Promise((resolve, reject) => {
-        formUploader.putFile(
-          uploadToken,
-          filename,
-          localFilePath,
-          putExtra,
-          (respErr, respBody, respInfo) => {
-            if (respErr) {
-              reject("");
-            }
-            if (respInfo.statusCode == 200) {
-              resolve(imageUrl + respBody.key);
-            } else {
-              reject("");
-            }
-            // 上传之后删除本地文件
-            fs.unlinkSync(localFilePath);
+        formUploader.putStream(uploadToken, `start-${new Date().getTime()}-end`, stream, putExtra, function(respErr,
+          respBody, respInfo) {
+          if (respErr) {
+            reject({aaa:'aaa',respErr,
+            respBody, respInfo});
           }
-        );
+          if (respInfo.statusCode == 200) {
+            console.log(respBody);
+            resolve(respBody);
+          } else {
+            reject({aaa:'ccc',respErr,
+            respBody, respInfo});
+          }
+        });
       });
+      console.log('imgSrc11',imgSrc);
       if (imgSrc !== "") {
         return {
-          url: imgSrc,
-          accessUrl:'http://qfasp1eiv.hn-bkt.clouddn.com/'+imgSrc.split('.com')[1]
+          url: imgSrc.key,
+          accessUrl:`http://qfasp1eiv.hn-bkt.clouddn.com/${imgSrc.key}`
         };
       } else {
         return false;
       }
     } catch (err) {
+      console.log('err',err);
       //如果出现错误，关闭管道
       await sendToWormhole(stream);
-      return false;
+      return err;
     }
   }
 }

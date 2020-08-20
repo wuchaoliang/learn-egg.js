@@ -12,14 +12,7 @@ class UploadController extends Controller {
   async doAdd() {
     const { ctx } = this;
     const data = await ctx.service.upload.uploadFiles();
-    console.log('data11',data);
-    if(data){
-      ctx.body = data;
-    }else{
-      ctx.body = {
-        message:"上传失败"
-      }
-    }
+    ctx.body = data;
   }
 }
 
