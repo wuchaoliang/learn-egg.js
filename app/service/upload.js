@@ -34,11 +34,11 @@ class upload extends Service {
     console.log('imgSrc',imgSrc);
     if (imgSrc !== "") {
       return {
-        url: imgSrc.key,
+        imgSrc: imgSrc,
         accessUrl:`http://qfasp1eiv.hn-bkt.clouddn.com/${imgSrc.key}`
       };
     } else {
-      return false;
+      return imgSrc;
     }
   }
 }
