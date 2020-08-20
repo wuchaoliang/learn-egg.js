@@ -71,7 +71,12 @@ module.exports = appInfo => {
     },
   };
   config.middleware = ['auth'];
-
+  config.multipart = {
+    // will append to whilelist
+    fileExtensions: [
+      '.pdf',
+    ],
+  };
   return {
     ...config,
     ...userConfig,
