@@ -17,7 +17,7 @@ class upload extends Service {
     const formUploader = new qiniu.form_up.FormUploader(config);
     const putExtra = new qiniu.form_up.PutExtra();
     const imgSrc = await new Promise((resolve, reject) => {
-      formUploader.putStream(uploadToken, `start-${new Date().getTime()}-end`, stream, putExtra, function(respErr,
+      formUploader.putStream(uploadToken, `${stream.filename}-${new Date().getTime()}`, stream, putExtra, function(respErr,
         respBody, respInfo) {
         if (respErr) {
           reject({respErr,
