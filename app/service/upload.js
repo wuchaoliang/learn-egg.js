@@ -15,7 +15,7 @@ class upload extends Service {
   async uploadFiles() {
     const stream = await this.ctx.getFileStream(); // 获取表单提交的数据
     const formUploader = new qiniu.form_up.FormUploader(config);
-    const putExtra = new qiniu.form_up.PutExtra();
+    let putExtra = new qiniu.form_up.PutExtra(stream.filename, {},stream.mimeType);
     const imgSrc = await new Promise((resolve, reject) => {
       formUploader.putStream(uploadToken, `${stream.filename}-${new Date().getTime()}`, stream, putExtra, function(respErr,
         respBody, respInfo) {
@@ -31,7 +31,8 @@ class upload extends Service {
         }
       });
     });
-    console.log('imgSrc',imgSrc);
+    console.log('imgSrc', imgSrc);
+    console.log('stream',stream);
     if (imgSrc !== "") {
       return {
         imgSrc: imgSrc,
