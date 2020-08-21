@@ -36,7 +36,7 @@ class upload extends Service {
     if (imgSrc !== "") {
       return {
         imgSrc: imgSrc,
-        accessUrl:`http://qfasp1eiv.hn-bkt.clouddn.com/${imgSrc.key}`
+        '文件访问地址':`http://qfasp1eiv.hn-bkt.clouddn.com/${imgSrc.key}`
       };
     } else {
       return imgSrc;
