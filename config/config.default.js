@@ -70,13 +70,18 @@ module.exports = appInfo => {
       '.html': 'ejs',
     },
   };
-  config.middleware = ['auth'];
+  // config.middleware = ['auth'];
   config.multipart = {
     fileSize: '50mb',
     // will append to whilelist
     fileExtensions: [
       '.pdf',
     ],
+  };
+  config.security = {
+    csrf: {
+      enable: false,
+    },
   };
   return {
     ...config,

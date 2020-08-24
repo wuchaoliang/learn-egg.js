@@ -9,10 +9,7 @@
 </head>
 
 <body>
-    <div>csrf:
-        <%= csrf %>
-    </div>
-    <form action="/upload/doAdd?_csrf=<%=csrf%>" method="post" enctype="multipart/form-data">
+    <form action="/upload/doAdd" method="post" enctype="multipart/form-data">
         <!-- <div>
             <label>
                         <span>账号</span>
