@@ -83,6 +83,11 @@ module.exports = appInfo => {
       enable: false,
     },
   };
+  config.bodyParser = {
+		formLimit: '30mb',
+    jsonLimit: '30mb',
+    textLimit: '30mb'
+	}
   return {
     ...config,
     ...userConfig,

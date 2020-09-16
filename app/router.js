@@ -14,5 +14,6 @@ module.exports = app => {
   router.get('/upload/add', controller.upload.add);
   // router.get('/upload/edit', controller.upload.edit);
   router.post('/upload/doAdd', controller.upload.doAdd);
+  router.post('/upload/doAddBase64', controller.upload.doAddBase64);
 
 };

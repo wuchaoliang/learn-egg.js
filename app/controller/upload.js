@@ -14,6 +14,12 @@ class UploadController extends Controller {
     const data = await ctx.service.upload.uploadFiles();
     ctx.body = data;
   }
+  
+  async doAddBase64() {
+    const fileObj = this.ctx.request.body;
+    const data = await this.ctx.service.upload.uploadBase64Files(fileObj);
+    this.ctx.body = data;
+  }
 }
 
 module.exports = UploadController;
